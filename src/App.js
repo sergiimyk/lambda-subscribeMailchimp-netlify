@@ -16,20 +16,22 @@ class App extends Component {
   handleMailchimp = async e => {
     const thankYouMessage = document.querySelector('#thank-you-message');
     e.preventDefault();
-    const response = await fetch('/.netlify/functions/test', {
-      method: 'POST',
+    const response = await fetch('./netlify/functions/test', {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: this.state.name, email: this.state.email }),
-    });
-    const body = await response.text();
-    
+    })
+
+    const body = await response.json();
+
     if (body === "success") {
       thankYouMessage.classList.add('show');
     }
 
-    this.setState({ responseToPost: body });
+    this.setState({ responseToPost: body }); 
+    
   };
 
   render() {
@@ -46,9 +48,8 @@ class App extends Component {
             </div>
             <input type="submit" class="btn btn-primary" value="Submit"/>
             <p id="thank-you-message">
-            Obrigada pela tua subscrição! <strong>Faz o download do teu guia <a href="https://drive.google.com/uc?export=download&id=18q_SSC1y46mJIEQZeeeRaJwTorSij-SO">neste link.</a></strong>            </p>
-{/*             <div class="elementor-message elementor-message-success" role="alert">Obrigada pela tua subscrição! <strong>Faz o download do teu guia <a href="https://www.mariagoncalves.pt/wp-content/uploads/2020/05/Guia-para-Gestão-do-Instagram_Bloglogia.pdf">neste link.</a></strong></div>
- */}
+            Obrigada pela tua subscrição! <strong>Faz o download do teu guia <a href="https://drive.google.com/uc?export=download&id=18q_SSC1y46mJIEQZeeeRaJwTorSij-SO">neste link.</a></strong>            
+            </p>
         </form>
         <p>{this.state.responseToPost}</p>
 
