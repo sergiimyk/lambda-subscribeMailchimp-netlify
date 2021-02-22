@@ -16,9 +16,9 @@ class App extends Component {
   handleMailchimp = async e => {
     const thankYouMessage = document.querySelector('#thank-you-message');
     e.preventDefault();
-    const response = await fetch('.netlify/lambda/test', {
+    const response = await fetch('.netlify/functions/test', {
       method: "POST",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: this.state.name, email: this.state.email }),
