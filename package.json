@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "start:lambda": "netlify-lambda serve functions",
     "build:lambda": "netlify-lambda build functions",
-    "prod": "npm run build; npm run build:lambda"
+    "prod": "npm run build && npm run build:lambda"
   },
   "proxy": "http://localhost:9000",
   "eslintConfig": {
