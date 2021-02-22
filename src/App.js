@@ -19,7 +19,6 @@ class App extends Component {
     const response = await fetch('.netlify/functions/test', {
       method: "POST",
       headers: {
-        
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name: this.state.name, email: this.state.email }),
